@@ -180,7 +180,29 @@ public class SlotMachine {
     }
     
     // Méthode pour obtenir les noms des paylines
+    
+        // Méthode pour obtenir les noms des paylines
     private String getPaylines() {
         StringBuilder result = new StringBuilder();
         
-        for (int i = 0; i < PAY
+        for (int i = 0; i < PAYLINE_NAMES.size(); i++) {
+            result.append(i + 1).append(". ").append(PAYLINE_NAMES.get(i)).append("\n");
+        }
+        
+        return result.toString();
+    }
+    
+    // Méthode pour obtenir les résultats de la spin
+    private int[][] getSpinResults() {
+        Random random = new Random();
+        int[][] spinResults = new int[this.numOfReels][this.selectionsPerReel];
+        
+        for (int i = 0; i < this.numOfReels; i++) {
+            for (int j = 0; j < this.selectionsPerReel; j++) {
+                spinResults[i][j] = random.nextInt(this.viewBox) + 1;
+            }
+        }
+        
+        return spinResults;
+    }
+
