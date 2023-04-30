@@ -1,19 +1,17 @@
 package src;
 
 public class Symbole {
-    private int id;
-    private int[] gains;
+    private String valeur;
 
-    public Symbole(int id, int[] gains) {
-        this.id = id;
-        this.gains = gains;
+    public Symbole(String valeur) {
+        this.valeur = valeur;
     }
 
-    public int getId() {
-        return id;
+    public String getValeur() {
+        return valeur;
     }
 
-    public int getGain(int combinaison) {
-        return gains[combinaison - 3];
+    public void setValeur(String valeur) {
+        this.valeur = valeur;
     }
 }
