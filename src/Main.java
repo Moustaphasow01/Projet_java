@@ -42,10 +42,22 @@ public class Main {
             System.out.println("Vous avez gagné : " + gains);
             machineASous.getJoueur().ajouterGains(gains);
 
-            // Si la partie bonus est déclenchée
             if (machineASous.isPartieBonus()) {
-                // Ajoutez ici la logique pour gérer la partie bonus, demander au joueur de choisir une case, calculer les gains, etc.
-                // ...
+                System.out.println("Vous avez déclenché la partie bonus !");
+            
+                // Demander au joueur de choisir une case
+                System.out.println("Choisissez une case (1-20) :");
+                int choix = scanner.nextInt();
+            
+                // Créer une instance de la classe Bonus
+                Bonus bonus = machineASous.getBonus();
+                int gainBonus = bonus.choisirCase(choix, mise);
+            
+                // Mettre à jour le solde du joueur
+                joueur.ajouterGain(gainBonus);
+            
+                // Afficher les gains de la partie bonus
+                System.out.println("Vous avez gagné " + gainBonus + " !");
             }
 
             // Si les tours gratuits sont déclenchés
