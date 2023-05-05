@@ -5,14 +5,13 @@ import java.util.Random;
 
 public class Colonne {
     private Rouleau rouleau;
-    private ArrayList<Symbole> affichage;
-    private Symbole symbole;
+    ArrayList<Symbole> affichage;
 
     public Colonne(Rouleau rouleau) {
         this.rouleau = rouleau;
         affichage = new ArrayList<>(5);
         for (int i = 0; i < 5; i++) {
-            affichage.add(new Symbole(""));
+            affichage.add(null);
         }
     }
 
@@ -28,13 +27,26 @@ public class Colonne {
 
     public void afficher() {
         for (Symbole symbole : affichage) {
-            System.out.print(symbole.getValeur() + " ");
+            System.out.print(symbole + " ");
         }
-        System.out.println();
+        
+        System.out.print(" | ");
     }
     
-    public Symbole getSymbole() {
-        return symbole;
+    public boolean estGagnante() {
+        Symbole symbolePrecedent = null;
+        int compteurSymbole = 1;
+        for (Symbole symbole : affichage) {
+            if (symbolePrecedent != null && symbole.equals(symbolePrecedent)) {
+                compteurSymbole++;
+                if (compteurSymbole == 3) {
+                    return true;
+                }
+            } else {
+                symbolePrecedent = symbole;
+                compteurSymbole = 1;
+            }
+        }
+        return false;
     }
 }
-

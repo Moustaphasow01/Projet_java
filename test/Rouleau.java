@@ -13,15 +13,23 @@ public class Rouleau {
     }
 
     public void genererSymboles() {
-        String[] symbolesPossibles = {"A", "B", "C", "D", "E", "F", "G", "H", "Super", "Free", "Bonus"};
+        Symbole[] symbolesPossibles = {Symbole.COEUR, Symbole.PIQUE, Symbole.CARRE, Symbole.TREFLE,
+                                       Symbole.CERISE, Symbole.CITRON, Symbole.ORANGE, Symbole.CLOCHE,
+                                       Symbole.SUPER, Symbole.FREE, Symbole.BONUS};
+
         Random random = new Random();
 
         for (int i = 0; i < taille; i++) {
-            symboles.add(new Symbole(symbolesPossibles[random.nextInt(symbolesPossibles.length)]));
+            symboles.add(symbolesPossibles[random.nextInt(symbolesPossibles.length)]);
         }
     }
 
     public ArrayList<Symbole> getSymboles() {
         return symboles;
     }
+
+    public String getSymbole(int i) {
+        return symboles.get(i).name();
+    }
+
 }

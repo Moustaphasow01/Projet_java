@@ -15,7 +15,7 @@ public class Main {
             System.out.println("Choisissez votre mise (2000, 4000, 6000, 10000) ou tapez 'q' pour quitter : ");
             String choixMise = scanner.next();
             int mise;
-
+            
             switch (choixMise) {
                 case "2000":
                     mise = 2000;
@@ -39,8 +39,7 @@ public class Main {
             }
 
             int gains = machineASous.jouer(mise, machineASous.getJoueur());
-            machineASous.afficherResultat();
-            System.out.println("Vous avez gagne : " + gains);
+          
             machineASous.getJoueur().ajouterGains(gains);
 
             if (machineASous.isPartieBonus()) {
@@ -49,16 +48,6 @@ public class Main {
                 // Demander au joueur de choisir une case
                 System.out.println("Choisissez une case (1-20) :");
                 int choix = scanner.nextInt();
-
-                // Créer une instance de la classe Bonus
-                // Bonus bonus = machineASous.getBonus();
-                // int gainBonus = bonus.choisirCase(choix, mise); 
-
-                // Mettre à jour le solde du joueur
-                // machineASous.getJoueur().ajouterGains(gainBonus);
-
-                // Afficher les gains de la partie bonus
-                // System.out.println("Vous avez gagné " + gainBonus + " !");
             }
 
             // Si les tours gratuits sont déclenchés
